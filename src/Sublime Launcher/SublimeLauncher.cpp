@@ -1,19 +1,20 @@
 // SublimeLauncher.cpp : Defines the entry point for the application.
 //
 
-#include "stdafx.h"
-#include "SublimeLauncher.h"
+#define WIN32_LEAN_AND_MEAN
+
+#include <windows.h>
 #include <shellapi.h>
 
-int APIENTRY _tWinMain(HINSTANCE hInstance,
-                     HINSTANCE hPrevInstance,
-                     LPTSTR    lpCmdLine,
-                     int       nCmdShow)
+int WINAPI wWinMain(HINSTANCE  hInstance,
+                    HINSTANCE  hPrevInstance,
+                    LPWSTR  lpCmdLine,
+                    int nCmdShow)
 {
 	UNREFERENCED_PARAMETER(hInstance);
 	UNREFERENCED_PARAMETER(hPrevInstance);
 
-	LPTSTR arguments = new TCHAR[wcslen(lpCmdLine)+2];
+	LPTSTR arguments = (LPTSTR)malloc(sizeof(TCHAR) * wcslen(lpCmdLine) * 2 + 100);
 	arguments[0] = L'\0';
 
 	bool argumentsPassed = false;
